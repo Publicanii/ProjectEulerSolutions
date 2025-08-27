@@ -1,3 +1,7 @@
+# Publicanii Software and Finance Team
+
+Publicani is -for now- a small software and finance team. Founded by two students at University, Publicanii tries to do its best.
+
 # Project Euler Solutions
 
 A collection of Python solutions to Project Euler problems.
