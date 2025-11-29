@@ -10,7 +10,8 @@ All solutions and explanations here are provided solely to show an alternative, 
 ## Structure
 
 Each problem is organized in its own directory containing:
-- `problemX.py` - Python solution implementation
+- `problemX.py` - Python implementation of problem X
+- `problemX.c` - C implementation of problem X
 - `explanation.md` - Step-by-step explanation of the solution approach
 
 ## About Project Euler
