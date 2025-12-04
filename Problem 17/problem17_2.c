@@ -10,7 +10,7 @@ int main(){
 		count += count_letters(i);
 	}
 
-	printf("sum of letter counts 1-1000: %d\n", count + 11); // one thousand
+	printf("sum of letter counts 1-1000: %d\n", count + 11); // add 11 "one thousand"
 
 	return 0;
 }
