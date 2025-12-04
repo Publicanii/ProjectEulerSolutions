@@ -1,16 +1,27 @@
 #include <stdio.h>
 
-int ones(int n);
-int tens(int n);
+int count_digits_letters(int n);
 int count_letters(int n);
 
 int main(){
+
 	int count = 0;
+	
 	for(int i = 1; i < 1000; i++){
 		count += count_letters(i);
 	}
 
 	printf("sum of letter counts 1-1000: %d\n", count + 11); // add 11 "one thousand"
+
+	// TEST
+	/*
+	int tests[] = {473, 312, 500, 38, 60, 17, 5};
+	int k = (int) sizeof(tests)/sizeof(int);
+	printf("Test\n");
+	for(int i = 0; i < k; i++){
+		printf("%d has written via %d letters\n", tests[i], count_letters(tests[i]));
+	}
+	*/
 
 	return 0;
 }
@@ -31,7 +42,7 @@ int count_letters(int n){
 
 	// All forms 1-1000 : Test value
 	// d3 hundred and d2-d1 : 473
-	// d3 hundred and {11-19} : 317
+	// d3 hundred and {11-19} : 312
 	// d3 hundred : 500
 	// d2-d1 : 38
 	// d2 : 60
@@ -40,7 +51,7 @@ int count_letters(int n){
 	
 	// printf("P0\n"); // log for testing
 	if(d3){
-		count += ones(d3/100) + 7; // {number} hundred
+		count += count_digits_letters(d3/100) + 7; // {number} hundred
 		if(d2+d1){
 			count += 3; // add "and"
 		}
@@ -48,17 +59,17 @@ int count_letters(int n){
 	// printf("P1\n"); // log for testing
 	if(d2){
 		if(d2 + d1 > 10 && d2 + d1 < 20){
-			count += tens(d2+d1);
+			count += count_digits_letters(d2+d1);
 		}
 		else{
-			count += tens(d2); // {number}	
+			count += count_digits_letters(d2); // {number}	
 		}
 	}
 	
 	// printf("P2\n"); // log for testing
 	if(d1){
 		if(d2 + d1 < 10 || d2 + d1 > 20){
-			count += ones(d1); // {number}		
+			count += count_digits_letters(d1); // {number}		
 		}
 	}
 	// printf("P3\n"); // log for testing
@@ -66,42 +77,39 @@ int count_letters(int n){
 	return count;
 }
 
-int ones(int n){
+int count_digits_letters(int n){
 	switch(n){
-		case 1: return 3; break;
-		case 2: return 3; break;
-		case 3: return 5; break;
-		case 4: return 4; break;
-		case 5: return 4; break;
-		case 6: return 3; break;
-		case 7: return 5; break;
-		case 8: return 5; break;
-		case 9: return 4; break;
+		// No need for break, return is finishes statement
+		// Ones
+		case 1: return 3;
+		case 2: return 3;
+		case 3: return 5;
+		case 4: return 4;
+		case 5: return 4;
+		case 6: return 3;
+		case 7: return 5;
+		case 8: return 5;
+		case 9: return 4;
+		// Special
+		case 11: return 6;
+		case 12: return 6;
+		case 13: return 8;
+		case 14: return 8;
+		case 15: return 7;
+		case 16: return 7;
+		case 17: return 9;
+		case 18: return 8;
+		case 19: return 8;
+		// Tens
+		case 10: return 3;
+		case 20: return 6;
+		case 30: return 6;
+		case 40: return 5;
+		case 50: return 5;
+		case 60: return 5;
+		case 70: return 7;
+		case 80: return 6;
+		case 90: return 6;
 	}
-}
-
-int tens(int n){
-	switch(n){
-		case 11: return 6; break;
-		case 12: return 6; break;
-		case 13: return 8; break;
-		case 14: return 8; break;
-		case 15: return 7; break;
-		case 16: return 7; break;
-		case 17: return 9; break;
-		case 18: return 8; break;
-		case 19: return 8; break;
-	}
-	
-	switch(n){
-		case 10: return 3; break;
-		case 20: return 6; break;
-		case 30: return 6; break;
-		case 40: return 5; break;
-		case 50: return 5; break;
-		case 60: return 5; break;
-		case 70: return 7; break;
-		case 80: return 6; break;
-		case 90: return 6; break;
-	}
+	return 0; // default
 }
