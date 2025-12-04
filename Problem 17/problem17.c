@@ -11,7 +11,7 @@ int main(){
 		count += count_letters(i);
 	}
 
-	printf("sum of letter counts 1-1000: %d\n", count + 11); // one thousand
+	printf("sum of letter counts 1-1000: %d\n", count + 11); // add 11 "one thousand"
 	
 	return 0;
 }
@@ -30,8 +30,14 @@ int count_letters(int n){
 	d2 = (n-d1)%100; // 2nd digit
 	d3 = n - d1 - d2; // 3rd digit
 
-	// d3 hundred and d2-d1
-	// d3 hundred and {if 11-19 }
+	// All forms 1-1000 : Test value
+	// d3 hundred and d2-d1 : 473
+	// d3 hundred and {11-19} : 317
+	// d3 hundred : 500
+	// d2-d1 : 38
+	// d2 : 60
+	// {11-19} : 17
+	// d1 : 5
 	
 	// printf("P0\n"); // log for testing
 	if(d3){
